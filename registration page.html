@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>The Eras Tour - Online Leg Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Libre+Bodoni:wght@400;500;600;700&display=swap');
+    </style>
+    <script src="registration.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="website icon.png" />
+</head>
+<body>
+    <header>
+            <img src="website logo.png">
+    </header>
+    <div id="registration-page">
+            <div class="event-header">
+            <div class="admat">
+                <img src="eras poster.jpg" alt="Taylor Swift The Eras Tour">
+            </div>
+            </div>
+            <div class="registration">
+            <h3>Registration is now open for the Online Leg of Taylor Swift <span class="line-dash">|</span> The Eras Tour.</h3>
+            <h4>
+                * This event is not organized by/affiliated with Taylor or her team. The purpose of this event is not making profit. I made this for us fans to have fun while Taylor is on break. The Eras Tour has become part of our daily lives and I just wanted to fill the void.
+            </h4>
+            <h4>
+                * You don’t need to pay money to be able to watch this or future events. “Tickets” are free!
+            </h4>
+            <h4>
+                * Registration is optional. You don’t need to register. Purpose of registration is solely to determine demand. If the demand is high, I might add more dates. Stay tuned for updates. If there is a chance you will watch the event, please register. I really need an accurate idea of demand to potentially add more dates.
+            </h4>
+            <h4>
+                * You are only required to fill your e-mail address. Name and last name are optional. Please enter your real e-mail address. I might send early e-mail updates, but that is not for sure.
+            </h4>
+            <h4>
+                * Please register only once. Do not register for more than one night. All nights’ registrations are combined. There’s no point of registering for more than one night. You will be able to watch without registering for any night, but if you are kind enough and decided to register, please only do it once and for one night.
+            </h4>
+            <h4>
+                Register Below :
+            </h4>
+            <form name="submit-to-google-sheet">
+                <div class="full-name">
+                <input type="text" value="" id="form-name" placeholder="Name (Optional)" name="Name">
+                <input type="text" value="" id="form-last-name" placeholder="Last Name (Optional)" name="Last Name">
+                </div>
+                <input type="email" value="" id="form-email" placeholder="E-mail (Required)" required name="E-mail">
+                <input type="submit" value="Submit registration.">
+            </form>
+            </div>
+    </div>
+    <div id="registration-successful">
+        <h3>We got your registration!</h3>
+        <h4>
+            Thank you for registering! This really helps me determine demand as accurately as possible. I will not check responses unless I send e-mails soon, which is currently not a thought. As of right now, I only care about the number of registrations. You will not receive a confirmation e-mail. Please don’t submit again. (That sounded mean, sorry!)
+        </h4>
+    </div>
+    <div id="registration-unsuccessful">
+        <h3>We didn’t get your registration.</h3>
+        <h4>
+            There was an error while you submitted your information. Please re-submit later. Submitting really helps me determine demand accurately. I’m so glad you decided to try, but unfortunately your try wasn’t successful, and that’s on us. Please refresh your page and try again!
+        </h4>
+    </div>
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwv3PmCMxPhKP-0SS2urH5lR_1l56kdfNhfkFLLBxuItYTzD1Pjoy224fRVDWNW-r4WZA/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => regsucc()
+          )
+      .catch(error => regunsucc()
+          )
+  })
+</script>
+</body>
+</html>
